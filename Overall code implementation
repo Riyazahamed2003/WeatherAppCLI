@@ -1,0 +1,119 @@
+import requests
+
+def get_weather_data():
+    url = "https://samples.openweathermap.org/data/2.5/forecast/hourly?q=London,us&appid=b6907d289e10d714a6e88b30761fae22"
+    response = requests.get(url)
+    return response.json()
+
+def get_weather_by_date(weather_data, date):
+    for data in weather_data['list']:
+        if date in data['dt_txt']:
+            return data['main']['temp']
+    return None
+
+def get_wind_speed_by_date(weather_data, date):
+    for data in weather_data['list']:
+        if date in data['dt_txt']:
+            return data['wind']['speed']
+    return None
+
+def get_pressure_by_date(weather_data, date):
+    for data in weather_data['list']:
+        if date in data['dt_txt']:
+            return data['main']['pressure']
+    return None
+
+def get_weather_summary(weather_data, date):
+    summary = []
+    for data in weather_data['list']:
+        if date in data['dt_txt']:
+            summary.append({
+                'date': data['dt_txt'],
+                'temperature': data['main']['temp'],
+                'weather_description': data['weather'][0]['description'],
+                'weather_icon': data['weather'][0]['icon'],
+                'wind_speed': data['wind']['speed'],
+                'pressure': data['main']['pressure']
+            })
+    return summary
+
+def convert_to_fahrenheit(celsius_temp):
+    return (celsius_temp * 9/5) + 32
+
+def calculate_average_temperature(weather_data, date):
+    temperatures = []
+    for data in weather_data['list']:
+        if date in data['dt_txt']:
+            temperatures.append(data['main']['temp'])
+    if temperatures:
+        return sum(temperatures) / len(temperatures)
+    return None
+
+if __name__ == "__main__":
+    try:
+        weather_data = get_weather_data()
+        
+        while True:
+            print("\nOptions:")
+            print("1. Get weather")
+            print("2. Get Wind Speed")
+            print("3. Get Pressure")
+            print("4. Weather Forecast Summary")
+            print("5. Calculate Average Temperature")
+            print("6. Convert Temperature to Fahrenheit")
+            print("0. Exit")
+
+            choice = int(input("Enter your choice: "))
+
+            if choice == 1:
+                date = input("Enter the date (YYYY-MM-DD HH:mm:ss): ")
+                temp = get_weather_by_date(weather_data, date)
+                if temp is not None:
+                    print(f"Temperature on {date}: {temp:.2f}°C")
+                else:
+                    print("Data not available for the input date.")
+            elif choice == 2:
+                date = input("Enter the date (YYYY-MM-DD HH:mm:ss): ")
+                wind_speed = get_wind_speed_by_date(weather_data, date)
+                if wind_speed is not None:
+                    print(f"Wind Speed on {date}: {wind_speed} m/s")
+                else:
+                    print("Data not available for the input date.")
+            elif choice == 3:
+                date = input("Enter the date (YYYY-MM-DD HH:mm:ss): ")
+                pressure = get_pressure_by_date(weather_data, date)
+                if pressure is not None:
+                    print(f"Pressure on {date}: {pressure} hPa")
+                else:
+                    print("Data not available for the input date.")
+            elif choice == 4:
+                date = input("Enter the date (YYYY-MM-DD): ")
+                weather_summary = get_weather_summary(weather_data, date)
+                if weather_summary:
+                    print(f"Weather Forecast Summary for {date}:")
+                    for item in weather_summary:
+                        print(f"Date/Time: {item['date']}, Temperature: {item['temperature']:.2f}°C, Weather Description: {item['weather_description']}, Wind Speed: {item['wind_speed']} m/s, Pressure: {item['pressure']} hPa, Weather Icon: {item['weather_icon']}")
+                else:
+                    print("Data not available for the input date.")
+            elif choice == 5:
+                date = input("Enter the date (YYYY-MM-DD): ")
+                avg_temp = calculate_average_temperature(weather_data, date)
+                if avg_temp is not None:
+                    print(f"Average Temperature on {date}: {avg_temp:.2f}°C")
+                else:
+                    print("Data not available for the input date.")
+            elif choice == 6:
+                celsius_temp = float(input("Enter the temperature in Celsius: "))
+                fahrenheit_temp = convert_to_fahrenheit(celsius_temp)
+                print(f"Temperature in Fahrenheit: {fahrenheit_temp:.2f}°F")
+            elif choice == 0:
+                break
+            else:
+                print("Invalid choice. Please try again.")
+
+    except requests.RequestException as e:
+        print("Error: Unable to fetch weather data. Please check your internet connection.")
+    except ValueError:
+        print("Error: Invalid input. Please enter a valid choice.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
