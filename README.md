@@ -8,7 +8,7 @@ This app fetches weather data from OpenWeatherMap and provides a user interface 
 
 # Files
 - [get_weather_data.py](https://github.com/Riyazahamed2003/WeatherAppCLI/blob/main/get_weather_data.py) - This file contains the code for fetching weather data from OpenWeatherMap.
-- main.py - This file contains the code for the main program.
+- [main.py](https://github.com/Riyazahamed2003/WeatherAppCLI/blob/main/main.py) - This file contains the code for the main program.
 - weather_summary.py - This file contains the code for generating a weather forecast summary.
 
 # Usage
