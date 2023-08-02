@@ -13,5 +13,3 @@ Run the following command:
 python main.py
 
 This will run the code and print the temperature, wind speed, and pressure for the specified date.
-
-Here is an example of how you could put the run method in the README file:
