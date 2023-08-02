@@ -3,14 +3,13 @@ A Python weather application using OpenWeatherMap API to fetch hourly data for a
 
 <img src="https://github.com/Riyazahamed2003/WeatherAppCLI/assets/118614045/30d623fd-776f-475a-bb41-9a11fd65ace6" width="500" height="300">
 
-# Run the code
+# Weather Forecast App
+This app fetches weather data from OpenWeatherMap and provides a user interface for viewing the data.
 
-To run the code, you will need to have Python installed on your computer. Once you have Python installed, you can run the code by following these steps:
+# Files
+1. get_weather_data.py - This file contains the code for fetching weather data from OpenWeatherMap.
+2. main.py - This file contains the code for the main program.
+3. weather_summary.py - This file contains the code for generating a weather forecast summary.
 
-1. Clone the GitHub repo.
-2. Navigate to the directory where you cloned the repo.
-3. Open a terminal window.
-4. Run the following command:
-python main.py
-
-This will run the code and print the temperature, wind speed, and pressure for the specified date.
+# Usage
+To run the app, simply run the main.py file.
