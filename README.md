@@ -6,10 +6,11 @@ A Python weather application using OpenWeatherMap API to fetch hourly data for a
 # Run the code
 
 To run the code, you will need to have Python installed on your computer. Once you have Python installed, you can run the code by following these steps:
-Clone the GitHub repo.
-Navigate to the directory where you cloned the repo.
-Open a terminal window.
-Run the following command:
+
+1. Clone the GitHub repo.
+2. Navigate to the directory where you cloned the repo.
+3. Open a terminal window.
+4. Run the following command:
 python main.py
 
 This will run the code and print the temperature, wind speed, and pressure for the specified date.
