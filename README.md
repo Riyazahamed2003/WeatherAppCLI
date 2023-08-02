@@ -12,4 +12,4 @@ This app fetches weather data from OpenWeatherMap and provides a user interface 
 3. weather_summary.py - This file contains the code for generating a weather forecast summary.
 
 # Usage
-To run the app, simply run the main.py file.
+To run the app, simply run the [Overall Code](https://github.com/Riyazahamed2003/WeatherAppCLI/blob/main/Overall%20code%20implementation) file.
