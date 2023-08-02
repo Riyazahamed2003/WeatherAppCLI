@@ -1,3 +1,5 @@
+[![Size](https://img.shields.io/github/repo-size/Riyazahamed2003/WeatherAppCLI?style=flat-square&color=green)](https://github.com/Riyazahamed2003/WeatherAppCLI)
+
 # WeatherAppCLI
 A Python weather application using OpenWeatherMap API to fetch hourly data for a city. Provides temperature, wind speed, and pressure info for a specific date via a simple CLI.
 
